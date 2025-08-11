@@ -1,0 +1,43 @@
+#App.jsx#
+
+import React from "react";
+import UseEffects from "./Components/UseEffects";
+
+const App=()=>{
+return(
+    <>
+   <UseEffects />
+    </>
+)
+}
+export default App;
+
+
+#UseEffect.jsx#
+import React, { useState, useEffect } from 'react';
+
+const UseEffects = () => {
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.github.com/users")
+      .then(x => x.json())
+      .then(y => setUser(y))
+      .catch(err => console.log(err));
+  }, []);
+
+  return (
+    <>
+      {user.map((x) => (
+        <div key={x.id}>
+          <h1>{x.login}</h1>
+          <h2>{x.id}</h2>
+          <img style={{ width: "100px", height: "100px" }}
+            src={x.avatar_url} alt=" " />
+        </div>
+      ))}
+    </>
+  );
+}
+
+export default UseEffects;
