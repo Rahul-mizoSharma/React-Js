@@ -1,0 +1,40 @@
+
+#App.jsx#
+import React from "react";
+import "./Styles/global.css";
+import MemoExample from "./Components/MemoExample";
+import Uncontrolled from "./Components/Uncontrolled";
+
+const App=()=>{
+return(
+    <>
+   <Uncontrolled />
+    </>
+)
+}
+export default App;
+
+
+#Uncontrolled.jsx#
+import React from 'react'
+import { useRef } from 'react';
+
+const Uncontrolled = () => {
+
+    const inputRef = useRef(null);
+
+    function changeName(){
+        console.log(inputRef.current.value);
+        
+    }
+  return (
+   <>
+   <input type="text" ref={inputRef}/>
+   <button onClick={changeName}>Submit</button>
+   
+   
+   </>
+  )
+}
+
+export default Uncontrolled
