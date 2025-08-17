@@ -1,8 +1,5 @@
 #App.jsx#
 import React from "react";
-import "./Styles/global.css";
-import MemoExample from "./Components/MemoExample";
-import Uncontrolled from "./Components/Uncontrolled";
 import Useref from "./Components/Useref";
 
 const App=()=>{
