@@ -2,7 +2,6 @@
 
 import React from "react";
 import UseEffects from "./Components/UseEffects";
-
 const App=()=>{
 return(
     <>
@@ -18,7 +17,6 @@ import React, { useState, useEffect } from 'react';
 
 const UseEffects = () => {
   const [user, setUser] = useState([]);
-
   useEffect(() => {
     fetch("https://api.github.com/users")
       .then(x => x.json())
