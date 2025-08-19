@@ -1,11 +1,7 @@
 #App.jsx#
 import React from "react";
-import "./Styles/global.css";
 import MemoExample from "./Components/MemoExample";
-import Uncontrolled from "./Components/Uncontrolled";
-import Useref from "./Components/Useref";
 import "./Styles/MemoExample.css";
-
 const App=()=>{
 return(
     <>
@@ -14,7 +10,6 @@ return(
 )
 }
 export default App;
-
 
 #MemoExample.jsx#
 import React, { useMemo } from 'react';
@@ -87,6 +82,7 @@ h1 {
   font-size: 1.4rem;
   background: linear-gradient(90deg, #ff6a00, #ee0979, #2193b0, #6dd5ed);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
 }
@@ -144,3 +140,4 @@ input[type="text"]:focus {
     transform: translateY(0);
   }
 }
+
