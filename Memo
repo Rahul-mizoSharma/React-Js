@@ -1,0 +1,146 @@
+#App.jsx#
+import React from "react";
+import "./Styles/global.css";
+import MemoExample from "./Components/MemoExample";
+import Uncontrolled from "./Components/Uncontrolled";
+import Useref from "./Components/Useref";
+import "./Styles/MemoExample.css";
+
+const App=()=>{
+return(
+    <>
+   <MemoExample />
+    </>
+)
+}
+export default App;
+
+
+#MemoExample.jsx#
+import React, { useMemo } from 'react';
+
+const MemoExample = () => {
+  const [count, setCount] = React.useState(0);
+  const [text, setText] = React.useState("");
+
+  function increase() {
+    setCount(count + 1);
+  }
+
+  function change(e) {
+    setText(e.target.value);
+  }
+
+  const square = (n) => {
+    console.log("Square function called");
+    return n * n;
+  };
+
+  let result = useMemo(() => square(count), [count]);
+
+  return (
+    <div className="container">
+      <h1>Count: {count}</h1>
+      <h1>Square: {result}</h1>
+      <button onClick={increase}>Increase</button>
+      <h1>Text: {text}</h1>
+      <input type="text" onChange={change} />
+    </div>
+  );
+};
+
+export default MemoExample;
+
+
+#MemoExammple.css#
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f6d365, #fda085, #a1c4fd, #c2e9fb);
+  background-size: 300% 300%;
+  animation: bgShift 12s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  animation: fadeIn 1s ease-in-out;
+  max-width: 450px;
+  width: 90%;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  background: linear-gradient(90deg, #ff6a00, #ee0979, #2193b0, #6dd5ed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+button {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: none;
+  color: white;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(118, 75, 162, 0.25);
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(118, 75, 162, 0.35);
+}
+
+input[type="text"] {
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 280px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #333;
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border: 1px solid #667eea;
+  box-shadow: 0 0 8px rgba(102, 126, 234, 0.4);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Animations */
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
