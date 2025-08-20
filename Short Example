@@ -1,7 +1,6 @@
 #App.jsx#
 import React from "react";
 import "./Styles/global.css";
-import MemoExample from "./Components/MemoExample";
 import "./Styles/MemoExample.css";
 import Short from "./Components/Short";
 
