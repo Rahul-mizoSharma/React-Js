@@ -1,0 +1,48 @@
+#App.jsx#
+import React from "react";
+import "./Styles/global.css";
+import MemoExample from "./Components/MemoExample";
+import Uncontrolled from "./Components/Uncontrolled";
+import Useref from "./Components/Useref";
+import "./Styles/MemoExample.css";
+import Short from "./Components/Short";
+
+const App=()=>{
+return(
+    <>
+   <Short />
+    </>
+)
+}
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+#Short.jsx#
+import React, { useState } from 'react'
+
+const Short = () => {
+    const[visible, isVisible] =useState(true);
+
+
+    function toggle(){
+        isVisible(!visible);
+    }
+  return (
+    <>
+   <h1>{visible && "HELLO"}</h1>
+   <button onClick={toggle}>
+    {visible ? "HIDE" : "SHOW"}
+   </button>
+   </>
+  )
+}
+export default Short;
